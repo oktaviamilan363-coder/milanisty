@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LAN Tutorial by Oktavia</title>
+
+<!-- Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- PPTX Preview -->
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/@work-zhanguo/pptx-preview@0.0.4/dist/standalone/style.css">
+
+<style>
+
+:root{
+    --maroon:#800020;
+    --dark:#4f0013;
+    --red:#a5002b;
+    --cream:#fff7f8;
+    --white:#ffffff;
+    --text:#2a1620;
+    --muted:#7d6870;
+    --line:#ead5dc;
+    --shadow:0 12px 35px rgba(80,0,25,.12);
+}
+
+*{
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:Poppins,Arial,sans-serif;
+    background:var(--cream);
+    color:var(--text);
+}
+
+/* NAVBAR */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(80,0,19,.97);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 6%;
+    box-shadow:0 5px 18px rgba(0,0,0,.15);
+}
+
+.brand{
+    font-weight:800;
+    font-size:20px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:22px;
+    font-size:14px;
+    font-weight:500;
+}
+
+nav a:hover{
+    color:#ffd9e2;
+}
+
+/* HERO */
+
+.hero{
+    background:linear-gradient(
+        135deg,
+        var(--dark),
+        var(--maroon),
+        #b00032
+    );
+    color:white;
+    padding:78px 6% 70px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:clamp(34px,6vw,64px);
+    margin:0 0 12px;
+}
+
+.hero p{
+    margin:0 auto;
+    max-width:760px;
+    opacity:.92;
+}
+
+/* GENERAL */
+
+.container{
+    width:min(1180px,92%);
+    margin:0 auto;
+}
+
+section{
+    padding:60px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.section-title h2{
+    margin:0;
+    color:var(--dark);
+    font-size:30px;
+}
+
+.section-title p{
+    color:var(--muted);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(240px,1fr));
+    gap:18px;
+}
+
+.card{
+    background:white;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:24px;
+    box-shadow:var(--shadow);
+}
+
+/* IDENTITY */
+
+.identity{
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:22px;
+}
+
+.identity .big{
+    background:
+        linear-gradient(
+            145deg,
+            var(--maroon),
+            var(--dark)
+        );
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    min-height:300px;
+}
+
+.avatar{
+    width:86px;
+    height:86px;
+    border-radius:50%;
+    background:white;
+    color:var(--maroon);
+    display:grid;
+    place-items:center;
+    font-size:34px;
+    font-weight:800;
+    margin-bottom:14px;
+}
+
+.info-row{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px dashed var(--line);
+    padding:12px 0;
+    gap:15px;
+}
+
+.info-row:last-child{
+    border:0;
+}
+
+.label{
+    font-weight:700;
+    color:var(--maroon);
+}
+
+/* MATERI */
+
+.material ul{
+    line-height:1.9;
+    margin-bottom:0;
+}
+
+/* BUTTON */
+
+.toolbar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:18px 0;
+}
+
+button,
+.btn{
+    border:0;
+    border-radius:12px;
+    padding:11px 16px;
+    background:var(--maroon);
+    color:white;
+    font-family:inherit;
+    font-weight:600;
+    cursor:pointer;
+    transition:.2s;
+}
+
+button:hover,
+.btn:hover{
+    background:var(--red);
+    transform:translateY(-1px);
+}
+
+button.secondary{
+    background:#f2e1e6;
+    color:var(--dark);
+}
+
+button.danger{
+    background:#8b1e3f;
+}
+
+button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.file-input{
+    display:none;
+}
+
+.file-label{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--maroon);
+    color:white;
+    padding:11px 16px;
+    border-radius:12px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.file-label:hover{
+    background:var(--red);
+}
+
+/* PPT */
+
+.ppt-shell{
+    background:#16050a;
+    border-radius:22px;
+    padding:14px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+}
+
+#pptx-root{
+    min-height:650px;
+    background:#241016;
+    border-radius:15px;
+    overflow:auto;
+}
+
+.empty{
+    min-height:300px;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    color:#f3dfe5;
+    padding:30px;
+}
+
+.status{
+    margin-top:10px;
+    font-size:13px;
+    color:var(--muted);
+}
+
+.status strong{
+    color:var(--maroon);
+}
+
+.note{
+    background:#fff0f3;
+    border-left:5px solid var(--maroon);
+    padding:15px 18px;
+    border-radius:10px;
+    margin:18px 0;
+    color:#5e3945;
+}
+
+/* VIDEO */
+
+.video-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+    gap:22px;
+}
+
+.video-card video{
+    width:100%;
+    border-radius:15px;
+    background:#14080c;
+    aspect-ratio:16/9;
+}
+
+.video-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:12px;
+}
+
+.video-title h3{
+    margin:0;
+    font-size:18px;
+}
+
+/* TABLE */
+
+.table-wrap{
+    overflow:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+th,
+td{
+    padding:12px;
+    border-bottom:1px solid var(--line);
+    text-align:left;
+    font-size:14px;
+}
+
+th{
+    background:#f5e3e8;
+    color:var(--dark);
+}
+
+/* FOOTER */
+
+footer{
+    background:var(--dark);
+    color:white;
+    text-align:center;
+    padding:28px 6%;
+    margin-top:30px;
+}
+
+footer p{
+    margin:4px 0;
+    opacity:.85;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:760px){
+
+    nav{
+        padding:12px 4%;
+    }
+
+    nav .links{
+        display:none;
+    }
+
+    .identity,
+    .video-grid{
+        grid-template-columns:1fr;
+    }
+
+    #pptx-root{
+        min-height:500px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="brand">
+        LAN Tutorial by Oktavia
+    </div>
+
+    <div class="links">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#materi">Materi</a>
+        <a href="#ppt">PPT</a>
+        <a href="#video">Video</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+    <div class="container">
+
+        <h1>
+            LAN Tutorial by Oktavia
+        </h1>
+
+        <p>
+            Website pembelajaran dan dokumentasi
+            pembuatan kabel LAN crossover dengan
+            dashboard materi, presentasi PPTX
+            interaktif, serta video tutorial.
+        </p>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+<!-- DASHBOARD -->
+
+<section id="dashboard">
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>
+            Dashboard
+        </h2>
+
+        <p>
+            Identitas pembuat website
+        </p>
+
+    </div>
+
+
+    <div class="identity">
+
+        <div class="card big">
+
+            <div class="avatar">
+                O
+            </div>
+
+            <h2 style="margin:0">
+                Oktavia Milanisty
+            </h2>
+
+            <p>
+                LAN Tutorial Project
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="info-row">
+                <span class="label">
+                    Nama
+                </span>
+
+                <span>
+                    Oktavia Milanisty
+                </span>
+            </div>
+
+
+            <div class="info-row">
+                <span class="label">
+                    NIM
+                </span>
+
+                <span>
+                    062640723233
+                </span>
+            </div>
+
+
+            <div class="info-row">
+                <span class="label">
+                    Kelas
+                </span>
+
+                <span>
+                    1TIB
+                </span>
+            </div>
+
+
+            <div class="info-row">
+                <span class="label">
+                    Jurusan
+                </span>
+
+                <span>
+                    Teknik Komputer
+                </span>
+            </div>
+
+
+            <div class="info-row">
+                <span class="label">
+                    Prodi
+                </span>
+
+                <span>
+                    Teknologi Informatika Multimedia Digital
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card" style="margin-top:22px">
+
+        <h3>
+            Kata Pengantar
+        </h3>
+
+        <p>
+            Website ini dibuat sebagai media pembelajaran
+            sederhana mengenai kabel LAN crossover.
+            Di dalamnya terdapat materi, presentasi,
+            dan video yang dapat digunakan untuk membantu
+            memahami proses serta konsep dasar jaringan
+            komputer.
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- MATERI -->
+
+<section id="materi" class="material">
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>
+            Materi LAN Crossover
+        </h2>
+
+        <p>
+            Ringkasan materi pembelajaran
+        </p>
+
+    </div>
+
+
+    <div class="grid">
+
+
+        <div class="card">
+
+            <h3>
+                01. Pengertian
+            </h3>
+
+            <p>
+                Kabel LAN crossover adalah kabel jaringan
+                yang susunan kabel pada salah satu ujung
+                konektornya dibuat berbeda dari ujung
+                lainnya agar perangkat sejenis dapat
+                berkomunikasi secara langsung.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                02. Alat & Bahan
+            </h3>
+
+            <ul>
+
+                <li>
+                    Kabel UTP
+                </li>
+
+                <li>
+                    Konektor RJ-45
+                </li>
+
+                <li>
+                    Tang crimping
+                </li>
+
+                <li>
+                    LAN tester
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                03. Susunan Warna
+            </h3>
+
+            <p>
+                <b>T568A:</b>
+                putih-hijau, hijau,
+                putih-oranye, biru,
+                putih-biru, oranye,
+                putih-cokelat, cokelat.
+            </p>
+
+            <p>
+                <b>T568B:</b>
+                putih-oranye, oranye,
+                putih-hijau, biru,
+                putih-biru, hijau,
+                putih-cokelat, cokelat.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                04. Pengujian
+            </h3>
+
+            <p>
+                Setelah konektor dipasang,
+                gunakan LAN tester untuk memastikan
+                setiap pin terhubung dengan urutan
+                yang benar.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- PPT -->
+
+<section id="ppt">
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>
+            Preview PPTX
+        </h2>
+
+        <p>
+            Presentasi asli Oktavia —
+            tetap dalam format PowerPoint (.pptx)
+        </p>
+
+    </div>
+
+
+    <div class="note">
+
+        <b>PPT yang digunakan:</b>
+
+        Presentasi logo Ruang Rasa.
+        Presentasi berisi perkenalan,
+        identitas logo, serta penjelasan
+        makna elemen-elemen logo.
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="toolbar">
+
+            <label
+                class="file-label"
+                for="pptUpload">
+
+                ＋ Upload / Ganti PPTX
+
+            </label>
+
+
+            <input
+                class="file-input"
+                id="pptUpload"
+                type="file"
+                accept=".pptx,
+                application/vnd.openxmlformats-officedocument.presentationml.presentation"
+            >
+
+
+            <button
+                class="secondary"
+                id="pptReset">
+
+                Kembalikan PPT Bawaan
+
+            </button>
+
+
+            <button
+                class="danger"
+                id="pptDelete">
+
+                Hapus PPT
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="status"
+            id="pptStatus">
+
+            Memuat PPT bawaan...
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="ppt-shell"
+        style="margin-top:18px">
+
+        <div id="pptx-root">
+
+            <div class="empty">
+
+                <div>
+
+                    <h3>
+                        Preview PPTX
+                    </h3>
+
+                    <p>
+                        Silakan upload file .pptx
+                        atau tunggu PPT bawaan dimuat.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- VIDEO -->
+
+<section id="video">
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>
+            Video Tutorial
+        </h2>
+
+        <p>
+            CRUD untuk dua video pembelajaran
+        </p>
+
+    </div>
+
+
+    <div class="video-grid">
+
+
+        <!-- VIDEO 1 -->
+
+        <div class="card video-card">
+
+            <div class="video-title">
+
+                <h3>
+                    Video 1
+                </h3>
+
+                <button
+                    class="danger"
+                    onclick="deleteVideo(1)">
+
+                    Hapus
+
+                </button>
+
+            </div>
+
+
+            <video
+                id="video1"
+                controls>
+            </video>
+
+
+            <div class="toolbar">
+
+                <label
+                    class="file-label"
+                    for="videoUpload1">
+
+                    ＋ Upload / Ganti Video
+
+                </label>
+
+                <input
+                    class="file-input"
+                    id="videoUpload1"
+                    type="file"
+                    accept="video/*">
+
+            </div>
+
+
+            <div
+                class="status"
+                id="videoStatus1">
+
+                Belum ada video.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- VIDEO 2 -->
+
+        <div class="card video-card">
+
+            <div class="video-title">
+
+                <h3>
+                    Video 2
+                </h3>
+
+                <button
+                    class="danger"
+                    onclick="deleteVideo(2)">
+
+                    Hapus
+
+                </button>
+
+            </div>
+
+
+            <video
+                id="video2"
+                controls>
+            </video>
+
+
+            <div class="toolbar">
+
+                <label
+                    class="file-label"
+                    for="videoUpload2">
+
+                    ＋ Upload / Ganti Video
+
+                </label>
+
+                <input
+                    class="file-input"
+                    id="videoUpload2"
+                    type="file"
+                    accept="video/*">
+
+            </div>
+
+
+            <div
+                class="status"
+                id="videoStatus2">
+
+                Belum ada video.
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- DATA FILE -->
+
+<section>
+
+<div class="container">
+
+    <div class="section-title">
+
+        <h2>
+            Data File
+        </h2>
+
+        <p>
+            Daftar file yang tersimpan di browser
+        </p>
+
+    </div>
+
+
+    <div class="card table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Jenis
+                    </th>
+
+                    <th>
+                        Nama File
+                    </th>
+
+                    <th>
+                        Ukuran
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="fileTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        <b>
+            LAN Tutorial by Oktavia
+        </b>
+    </p>
+
+    <p>
+        Oktavia Milanisty • 1TIB • Teknik Komputer
+    </p>
+
+</footer>
+
+
+
+<!-- =====================================================
+     PPTX PREVIEW LIBRARY
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@work-zhanguo/pptx-preview@0.0.4/dist/standalone/index.js">
+</script>
+
+
+<script>
+
+/* =====================================================
+   DATABASE
+===================================================== */
+
+const DB_NAME =
+    "LAN_Tutorial_Oktavia";
+
+const STORE =
+    "files";
+
+const PPT_KEY =
+    "main-ppt";
+
+
+/* =====================================================
+   NAMA PPT BAWAAN
+===================================================== */
+
+const DEFAULT_NAME =
+    "Presentasi logo ruang rasa ( Oktavia Milanisty).pptx";
+
+
+/*
+   PENTING:
+
+   Tempel Base64 PPTX kamu di bagian:
+
+   const DEFAULT_B64 = "...";
+
+   Jika menggunakan file HTML yang sudah aku buat,
+   bagian ini sudah berisi PPTX kamu.
+*/
+
+const DEFAULT_B64 = "TEMPEL_BASE64_PPTX_DI_SINI";
+
+
+/* =====================================================
+   DATABASE OPEN
+===================================================== */
+
+function openDB(){
+
+    return new Promise(
+        (resolve,reject)=>{
+
+            const request =
+                indexedDB.open(DB_NAME,1);
+
+            request.onupgradeneeded =
+                function(){
+
+                    request.result
+                        .createObjectStore(
+                            STORE,
+                            {
+                                keyPath:"id"
+                            }
+                        );
+
+                };
+
+
+            request.onsuccess =
+                function(){
+
+                    resolve(
+                        request.result
+                    );
+
+                };
+
+
+            request.onerror =
+                function(){
+
+                    reject(
+                        request.error
+                    );
+
+                };
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   SIMPAN FILE
+===================================================== */
+
+async function putFile(
+    id,
+    type,
+    file,
+    name
+){
+
+    const db =
+        await openDB();
+
+    return new Promise(
+        (resolve,reject)=>{
+
+            const transaction =
+                db.transaction(
+                    STORE,
+                    "readwrite"
+                );
+
+            transaction
+                .objectStore(STORE)
+                .put({
+
+                    id:id,
+                    type:type,
+                    name:name,
+                    file:file,
+                    updated:Date.now()
+
+                });
+
+
+            transaction.oncomplete =
+                resolve;
+
+            transaction.onerror =
+                function(){
+
+                    reject(
+                        transaction.error
+                    );
+
+                };
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   AMBIL FILE
+===================================================== */
+
+async function getFile(id){
+
+    const db =
+        await openDB();
+
+    return new Promise(
+        (resolve,reject)=>{
+
+            const request =
+                db.transaction(STORE)
+                .objectStore(STORE)
+                .get(id);
+
+
+            request.onsuccess =
+                function(){
+
+                    resolve(
+                        request.result
+                    );
+
+                };
+
+
+            request.onerror =
+                function(){
+
+                    reject(
+                        request.error
+                    );
+
+                };
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   AMBIL SEMUA FILE
+===================================================== */
+
+async function getAll(){
+
+    const db =
+        await openDB();
+
+    return new Promise(
+        (resolve,reject)=>{
+
+            const request =
+                db.transaction(STORE)
+                .objectStore(STORE)
+                .getAll();
+
+
+            request.onsuccess =
+                function(){
+
+                    resolve(
+                        request.result
+                    );
+
+                };
+
+
+            request.onerror =
+                function(){
+
+                    reject(
+                        request.error
+                    );
+
+                };
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   HAPUS FILE
+===================================================== */
+
+async function removeFile(id){
+
+    const db =
+        await openDB();
+
+    return new Promise(
+        (resolve,reject)=>{
+
+            const transaction =
+                db.transaction(
+                    STORE,
+                    "readwrite"
+                );
+
+
+            transaction
+                .objectStore(STORE)
+                .delete(id);
+
+
+            transaction.oncomplete =
+                resolve;
+
+
+            transaction.onerror =
+                function(){
+
+                    reject(
+                        transaction.error
+                    );
+
+                };
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   FORMAT UKURAN FILE
+===================================================== */
+
+function formatBytes(bytes){
+
+    if(!bytes){
+        return "0 B";
+    }
+
+    const units =
+        [
+            "B",
+            "KB",
+            "MB",
+            "GB"
+        ];
+
+    const index =
+        Math.floor(
+            Math.log(bytes) /
+            Math.log(1024)
+        );
+
+    return (
+        bytes /
+        Math.pow(1024,index)
+    ).toFixed(
+        index ? 1 : 0
+    )
+    + " "
+    + units[index];
+
+}
+
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(text){
+
+    return String(text)
+        .replace(
+            /[&<>'"]/g,
+            function(char){
+
+                return {
+
+                    "&":"&amp;",
+                    "<":"&lt;",
+                    ">":"&gt;",
+                    "'":"&#39;",
+                    '"':"&quot;"
+
+                }[char];
+
+            }
+        );
+
+}
+
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function showStatus(
+    id,
+    message
+){
+
+    document
+        .getElementById(id)
+        .innerHTML =
+        message;
+
+}
+
+
+
+/* =====================================================
+   PPT RENDERER
+===================================================== */
+
+let pptMounted = null;
+
+
+function mountPpt(
+    source,
+    fileName
+){
+
+    const root =
+        document.getElementById(
+            "pptx-root"
+        );
+
+
+    root.innerHTML = "";
+
+
+    if(
+        pptMounted &&
+        pptMounted.destroy
+    ){
+
+        try{
+
+            pptMounted.destroy();
+
+        }catch(error){}
+
+    }
+
+
+    try{
+
+        pptMounted =
+            window.PptxPreview.mount(
+                root,
+                {
+
+                    source:source,
+
+                    fileName:
+                        fileName ||
+                        "presentasi.pptx",
+
+                    showToolbar:true,
+
+                    showThumbnails:true,
+
+                    autoPlay:false,
+
+                    playInterval:3000,
+
+                    loopPlayback:true
+
+                }
+            );
+
+
+    }catch(error){
+
+        root.innerHTML = `
+
+            <div class="empty">
+
+                <div>
+
+                    <h3>
+                        Gagal menampilkan PPTX
+                    </h3>
+
+                    <p>
+                        ${escapeHtml(
+                            error.message ||
+                            String(error)
+                        )}
+                    </p>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   BASE64 → BLOB
+===================================================== */
+
+function b64ToBlob(
+    base64,
+    type
+){
+
+    const bytes =
+        atob(base64);
+
+
+    const array =
+        new Uint8Array(
+            bytes.length
+        );
+
+
+    for(
+        let i = 0;
+        i < bytes.length;
+        i++
+    ){
+
+        array[i] =
+            bytes.charCodeAt(i);
+
+    }
+
+
+    return new Blob(
+        [array],
+        {
+            type:type
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   LOAD PPT
+===================================================== */
+
+async function loadPpt(){
+
+    const saved =
+        await getFile(
+            PPT_KEY
+        );
+
+
+    if(
+        saved &&
+        saved.file
+    ){
+
+        mountPpt(
+            saved.file,
+            saved.name
+        );
+
+
+        showStatus(
+            "pptStatus",
+
+            "PPT tersimpan: " +
+
+            "<strong>" +
+
+            escapeHtml(
+                saved.name
+            ) +
+
+            "</strong> • " +
+
+            formatBytes(
+                saved.file.size
+            )
+        );
+
+    }
+
+    else{
+
+        /*
+           Jika Base64 tersedia,
+           tampilkan PPT bawaan.
+        */
+
+        if(
+            DEFAULT_B64 !==
+            "TEMPEL_BASE64_PPTX_DI_SINI"
+        ){
+
+            const blob =
+                b64ToBlob(
+                    DEFAULT_B64,
+
+                    "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+                );
+
+
+            const file =
+                new File(
+                    [blob],
+                    DEFAULT_NAME,
+                    {
+                        type:
+                        blob.type
+                    }
+                );
+
+
+            mountPpt(
+                file,
+                DEFAULT_NAME
+            );
+
+
+            showStatus(
+                "pptStatus",
+
+                "PPT bawaan aktif: " +
+
+                "<strong>" +
+
+                escapeHtml(
+                    DEFAULT_NAME
+                ) +
+
+                "</strong> • " +
+
+                formatBytes(
+                    file.size
+                )
+            );
+
+        }
+
+        else{
+
+            document
+                .getElementById(
+                    "pptx-root"
+                )
+                .innerHTML = `
+
+                <div class="empty">
+
+                    <div>
+
+                        <h3>
+                            PPTX belum tersedia
+                        </h3>
+
+                        <p>
+                            Upload file PPTX
+                            untuk menampilkan
+                            presentasi.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                `;
+
+
+            showStatus(
+                "pptStatus",
+                "Belum ada PPTX."
+            );
+
+        }
+
+    }
+
+}
+
+
+
+/* =====================================================
+   UPLOAD PPT
+===================================================== */
+
+document
+.getElementById("pptUpload")
+.addEventListener(
+    "change",
+    async function(event){
+
+        const file =
+            event.target.files[0];
+
+
+        if(!file){
+            return;
+        }
+
+
+        if(
+            !file.name
+            .toLowerCase()
+            .endsWith(".pptx")
+        ){
+
+            alert(
+                "Pilih file PPTX."
+            );
+
+            return;
+
+        }
+
+
+        await putFile(
+            PPT_KEY,
+            "pptx",
+            file,
+            file.name
+        );
+
+
+        mountPpt(
+            file,
+            file.name
+        );
+
+
+        showStatus(
+            "pptStatus",
+
+            "PPT diperbarui: " +
+
+            "<strong>" +
+
+            escapeHtml(
+                file.name
+            ) +
+
+            "</strong> • " +
+
+            formatBytes(
+                file.size
+            )
+        );
+
+
+        await refreshTable();
+
+
+        event.target.value = "";
+
+    }
+);
+
+
+
+/* =====================================================
+   RESET PPT
+===================================================== */
+
+document
+.getElementById("pptReset")
+.onclick =
+async function(){
+
+    await removeFile(
+        PPT_KEY
+    );
+
+    await loadPpt();
+
+    await refreshTable();
+
+};
+
+
+
+/* =====================================================
+   DELETE PPT
+===================================================== */
+
+document
+.getElementById("pptDelete")
+.onclick =
+async function(){
+
+    await removeFile(
+        PPT_KEY
+    );
+
+
+    if(
+        pptMounted &&
+        pptMounted.destroy
+    ){
+
+        try{
+
+            pptMounted.destroy();
+
+        }catch(error){}
+
+    }
+
+
+    document
+        .getElementById(
+            "pptx-root"
+        )
+        .innerHTML = `
+
+        <div class="empty">
+
+            <div>
+
+                <h3>
+                    PPTX dihapus
+                </h3>
+
+                <p>
+                    Upload PPTX baru
+                    untuk menampilkan
+                    presentasi.
+                </p>
+
+            </div>
+
+        </div>
+
+        `;
+
+
+    showStatus(
+        "pptStatus",
+        "PPT telah dihapus."
+    );
+
+
+    await refreshTable();
+
+};
+
+
+
+/* =====================================================
+   VIDEO
+===================================================== */
+
+let videoUrls = {};
+
+
+async function loadVideos(){
+
+    for(
+        let i = 1;
+        i <= 2;
+        i++
+    ){
+
+        const record =
+            await getFile(
+                "video-" + i
+            );
+
+
+        const video =
+            document.getElementById(
+                "video" + i
+            );
+
+
+        if(
+            videoUrls[i]
+        ){
+
+            URL.revokeObjectURL(
+                videoUrls[i]
+            );
+
+        }
+
+
+        if(
+            record &&
+            record.file
+        ){
+
+            videoUrls[i] =
+                URL.createObjectURL(
+                    record.file
+                );
+
+
+            video.src =
+                videoUrls[i];
+
+
+            video.load();
+
+
+            showStatus(
+                "videoStatus" + i,
+
+                "Tersimpan: " +
+
+                "<strong>" +
+
+                escapeHtml(
+                    record.name
+                ) +
+
+                "</strong> • " +
+
+                formatBytes(
+                    record.file.size
+                )
+            );
+
+        }
+
+        else{
+
+            video.removeAttribute(
+                "src"
+            );
+
+
+            video.load();
+
+
+            showStatus(
+                "videoStatus" + i,
+
+                "Belum ada video."
+            );
+
+        }
+
+    }
+
+}
+
+
+
+/* =====================================================
+   UPLOAD VIDEO
+===================================================== */
+
+for(
+    let i = 1;
+    i <= 2;
+    i++
+){
+
+    document
+    .getElementById(
+        "videoUpload" + i
+    )
+    .addEventListener(
+        "change",
+        async function(event){
+
+            const file =
+                event.target.files[0];
+
+
+            if(!file){
+                return;
+            }
+
+
+            await putFile(
+                "video-" + i,
+                "video",
+                file,
+                file.name
+            );
+
+
+            await loadVideos();
+
+            await refreshTable();
+
+
+            event.target.value = "";
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   DELETE VIDEO
+===================================================== */
+
+async function deleteVideo(
+    number
+){
+
+    await removeFile(
+        "video-" + number
+    );
+
+
+    await loadVideos();
+
+    await refreshTable();
+
+}
+
+
+
+/* =====================================================
+   DATA TABLE
+===================================================== */
+
+async function refreshTable(){
+
+    const tbody =
+        document.getElementById(
+            "fileTable"
+        );
+
+
+    const rows =
+        await getAll();
+
+
+    tbody.innerHTML = "";
+
+
+    const items = [];
+
+
+    const ppt =
+        rows.find(
+            item =>
+            item.id === PPT_KEY
+        );
+
+
+    if(ppt){
+
+        items.push(ppt);
+
+    }
+
+
+    for(
+        let i = 1;
+        i <= 2;
+        i++
+    ){
+
+        const video =
+            rows.find(
+                item =>
+                item.id ===
+                "video-" + i
+            );
+
+
+        if(video){
+
+            items.push(video);
+
+        }
+
+    }
+
+
+    if(
+        !items.length
+    ){
+
+        tbody.innerHTML = `
+
+        <tr>
+
+            <td colspan="4">
+                Belum ada file
+                yang disimpan.
+            </td>
+
+        </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    items.forEach(
+        function(item){
+
+            const tr =
+                document.createElement(
+                    "tr"
+                );
+
+
+            tr.innerHTML = `
+
+                <td>
+                    ${escapeHtml(
+                        item.type
+                        .toUpperCase()
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHtml(
+                        item.name
+                    )}
+                </td>
+
+                <td>
+                    ${formatBytes(
+                        item.file.size
+                    )}
+                </td>
+
+                <td>
+                    <b
+                    style="
+                    color:#800020
+                    ">
+                        Tersimpan
+                    </b>
+                </td>
+
+            `;
+
+
+            tbody.appendChild(tr);
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   START WEBSITE
+===================================================== */
+
+(async function(){
+
+    try{
+
+        await loadPpt();
+
+        await loadVideos();
+
+        await refreshTable();
+
+    }
+
+    catch(error){
+
+        console.error(
+            error
+        );
+
+
+        showStatus(
+            "pptStatus",
+            "Terjadi kesalahan."
+        );
+
+    }
+
+})();
+
+</script>
+
+</body>
+</html>
